@@ -1,2 +1,2 @@
-# javaFileManipulation1
-First excercise of file manipulation in Java.
+# FileManipulation
+First excercise of file manipulation (Java).
