@@ -5,7 +5,6 @@
  */
 package ficheros;
 
-import com.sun.xml.internal.ws.util.StringUtils;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
@@ -80,8 +79,10 @@ public abstract class Helper {
         boolean opcionInvalida = true;
         ArrayList<String> disp = Main.borrados.getDisponibles();
         String enunciado = "Selecciona un deporte: \n";
+        String dep = "";
         for (int i = 0; i < disp.size(); i++) {
-            enunciado += ((i + 1) + ". " + StringUtils.capitalize(disp.get(i)) + "\n");
+            dep = disp.get(i);
+            enunciado += ((i + 1) + ". " + Character.toUpperCase(dep.charAt(0)) + dep.substring(1) + "\n");
         }
         do {
             opcion = pedirEntero(enunciado);

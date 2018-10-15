@@ -55,6 +55,11 @@ public class Main {
                         break;
                     case 6:
                         anularDeporte();
+                        break;
+                    case 7: //sale del programa
+                        break;
+                    default: 
+                        System.err.println("Opcion invalida.");
                 }
             }
 
@@ -81,7 +86,7 @@ public class Main {
                 deportes.get(deporte).addAlumno(alu);
             }
         } catch (Exception ex) {
-            System.err.println(ex.getMessage());
+            System.err.println("Error I/O");
         }
     }
     /**
@@ -90,14 +95,17 @@ public class Main {
     private static void listarAlumnosPorCurso() {
         String curso = Helper.pedirCurso();
         ArrayList<String> disp = Main.borrados.getDisponibles();
+        boolean oneFound = false;
         for (String dep : disp) {
             Collection<Alumno> alumnos = Main.deportes.get(dep).getAlumnos().values();
             for (Alumno alum : alumnos) {
                 if (alum.getCurso().equals(curso)) {
                     System.out.println(alum);
+                    oneFound = true;
                 }
             }
         }
+        if (!oneFound) System.err.println("No hay ningun alumno inscrito en este curso.");
     }
     /**
      * Lista las incompatibilidades de cada deporte disponible. 
@@ -149,8 +157,8 @@ public class Main {
      */
     private static void eliminarAlumno() {
         ArrayList<String> disp = Main.borrados.getDisponibles();
-        String nombre = Helper.pedirCadena("Introduce el nombre del alumno a borrar:");
-        String apellidos = Helper.pedirCadena("Introduce los apellidos:");
+        String nombre = Helper.pedirCadena("Introduce el nombre del alumno a borrar:\n");
+        String apellidos = Helper.pedirCadena("Introduce los apellidos:\n");
         Alumno alumno = new Alumno(nombre, apellidos);
         if (Helper.isAlumnoInscrito(alumno)) {
             for (String dep : disp) {
