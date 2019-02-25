@@ -1,2 +1,2 @@
 # FileManipulation
-First excercise of file manipulation (Java).
+Use of File, FileReader, BufferedReader, FilwWriter, BufferedWriter.
